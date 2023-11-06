@@ -35,8 +35,6 @@
 #   json = urlopen(request).read().decode()
 
 import requests
-
-
 from fastapi import FastAPI, Request
 
 #bot_token = "7a68edb9635828c387afad07d7"
