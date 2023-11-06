@@ -53,7 +53,7 @@ async def webhook(request: Request):
 
     return {'status': "OK"}
 
-@app.get("/", methods=['GET'])
+@app.get("/")
 def hello():
     return "hey", 200
 
