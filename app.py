@@ -1,4 +1,4 @@
-import os
+
 import json
 
 from urllib.parse import urlencode
@@ -31,7 +31,7 @@ def send_message(msg):
           'bot_id' : '7a68edb9635828c387afad07d7',
           'text'   : msg,
          }
-  request = requests.post(url, json = data)
+  request = requests.post(url, json=data)
   json = urlopen(request).read().decode()
 
 # import requests
