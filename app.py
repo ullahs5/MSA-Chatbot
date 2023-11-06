@@ -1,31 +1,55 @@
-import os
-import json
+# import os
+# import json
+#
+# from urllib.parse import urlencode
+# from urllib.request import Request, urlopen
+#
+# from flask import Flask, request
+#
+# app = Flask(__name__)
+#
+# @app.route('/', methods=['POST'])
+# def webhook():
+#   data = request.get_json()
+#
+#   # We don't want to reply to ourselves!
+#   if data['name'] != 'The Talker':
+#     msg = '{}, you sent "{}".'.format(data['name'], data['text'])
+#     send_message(msg)
+#
+#   return "ok", 200
+#
+# def send_message(msg):
+#   url  = 'https://api.groupme.com/v3/groups/97130171/messages?token=ytitIf5Eb3KKfHcDuT20MGmaTpMEyCBR2CrGmFAd'
+#
+#   data = {
+#           'bot_id' : '7a68edb9635828c387afad07d7',
+#           'text'   : msg,
+#          }
+#   request = Request(url, urlencode(data).encode())
+#   json = urlopen(request).read().decode()
 
-from urllib.parse import urlencode
-from urllib.request import Request, urlopen
+import requests
 
-from flask import Flask, request
+import uvicorn
+from fastapi import FastAPI, Request
 
-app = Flask(__name__)
+#bot_token = "7a68edb9635828c387afad07d7"
+app = FastAPI()
 
-@app.route('/', methods=['POST'])
-def webhook():
-  data = request.get_json()
+@app.post("/")
+async def webhook(request: Request):
+    data = await request.json()
 
-  # We don't want to reply to ourselves!
-  if data['name'] != 'The Talker':
-    msg = '{}, you sent "{}".'.format(data['name'], data['text'])
-    send_message(msg)
+    if '.' in data['text'].lower()[0]:
+        response_text = "yo"
+        url = "https://api.groupme.com/v3/bots/post"
+        data = {
+            "bot_id": "7a68edb9635828c387afad07d7",
+            "text": response_text
+        }
+        response = requests.post(url, json=data)
+        print(response.status_code)
 
-  return "ok", 200
-
-def send_message(msg):
-  url  = 'https://api.groupme.com/v3/groups/97130171/messages?token=ytitIf5Eb3KKfHcDuT20MGmaTpMEyCBR2CrGmFAd'
-
-  data = {
-          'bot_id' : '7a68edb9635828c387afad07d7',
-          'text'   : msg,
-         }
-  request = Request(url, urlencode(data).encode())
-  json = urlopen(request).read().decode()
+    return {'status': "OK"}
 
