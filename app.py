@@ -37,9 +37,14 @@ def chat(text):
     user_message = text
     chat_log.append({"role": "user", "content": user_message})
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-3.5-turbo-instruct",
         messages= chat_log,
-        max_tokens= 20
+        temperature=1,
+        max_tokens=500,
+        n=1,
+        stop=None,
+        presence_penalty=0,
+        frequency_penalty=0.1
     )
     bot_response = response.choices[0].message.content.strip("\n").strip()
     chat_log.append({"role": "assistant", "content": bot_response})
