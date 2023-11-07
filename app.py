@@ -20,7 +20,7 @@ def webhook():
 
   if '.' in data['text'].lower()[0]:
       text = data['text'].lower()
-      response_text = chat(text, chat_log)
+      response_text = chat(text)
       url = "https://api.groupme.com/v3/bots/post"
       data = {
           "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
@@ -33,9 +33,7 @@ def webhook():
 
 # client.api_key = API_KEY
 
-def chat(text, chat_log):
-    if len(chat_log) == 5:
-        chat_log = []
+def chat(text):
     user_message = text
     chat_log.append({"role": "user", "content": user_message})
     response = client.chat.completions.create(
@@ -43,8 +41,8 @@ def chat(text, chat_log):
         messages= chat_log,
         max_tokens= 20
     )
-
     bot_response = response.choices[0].message.content.strip("\n").strip()
+    chat_log.append({"role": "assistant", "content": bot_response})
     return bot_response
 
 
