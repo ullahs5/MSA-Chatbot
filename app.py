@@ -34,11 +34,14 @@ def webhook():
 # client.api_key = API_KEY
 
 def chat(text, chat_log):
+    if len(chat_log) == 5:
+        chat_log = []
     user_message = text
     chat_log.append({"role": "user", "content": user_message})
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages= chat_log
+        messages= chat_log,
+        max_tokens= 20
     )
 
     bot_response = response.choices[0].message.content.strip("\n").strip()
