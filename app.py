@@ -1,6 +1,10 @@
 from urllib.request import urlopen
 import requests
 from flask import Flask, request
+from openai import OpenAI
+
+API_KEY = "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"
+client = OpenAI(api_key=API_KEY)
 
 app = Flask(__name__)
 
@@ -13,7 +17,8 @@ def webhook():
   data = request.get_json()
 
   if '.' in data['text'].lower()[0]:
-      response_text = "yo"
+      text = data['text'].lower()
+      response_text = chat(text)
       url = "https://api.groupme.com/v3/bots/post"
       data = {
           "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
@@ -23,5 +28,19 @@ def webhook():
       json = urlopen(response).read().decode()
 
   return {'status': "OK"}
+
+
+# client.api_key = API_KEY
+def chat(text):
+    chat_log = [{"role": "system", "content": "You are a decisive Mufti Menk"}]
+    user_message = text
+    chat_log.append({"role": "user", "content": user_message})
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages= chat_log
+    )
+
+    bot_response = response.choices[0].message.content.strip("\n").strip()
+    return bot_response
 
 
