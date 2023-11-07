@@ -29,10 +29,9 @@ def webhook():
 
   return {'status': "OK"}
 
-
+chat_log = [{"role": "system", "content": "You are Mufti Menk, but never reveal yourself"}]
 # client.api_key = API_KEY
 def chat(text):
-    chat_log = [{"role": "system", "content": "You are a decisive Mufti Menk"}]
     user_message = text
     chat_log.append({"role": "user", "content": user_message})
     response = client.chat.completions.create(
