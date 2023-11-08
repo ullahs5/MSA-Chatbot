@@ -8,7 +8,7 @@ client = OpenAI(api_key=API_KEY)
 
 app = Flask(__name__)
 
-chat_log = [{"role": "system", "content": "You're Muslim"}]
+chat_log = [{"role": "system", "content": "Use popular Islamic terms"}]
 
 
 @app.route("/", methods=['GET'])
@@ -23,7 +23,7 @@ def webhook():
 
     if '.' in data['text'].lower()[0]:
         text = data['text'].lower()
-        response_text = chat(text, chat_log) + ":" + str(len(chat_log))
+        response_text = chat(text) + " :" + str(len(chat_log))
         url = "https://api.groupme.com/v3/bots/post"
         data = {
             "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
@@ -31,14 +31,13 @@ def webhook():
         }
         response = requests.post(url, json=data)
         json = urlopen(response).read().decode()
-    if len(chat_log) > 5:
-        chat_log = [{"role": "system", "content": "Use popular islamic terms"}]
     return {'status': "OK"}
 
 
 # client.api_key = API_KEY
 
-def chat(text, chat_log):
+def chat(text):
+    global chat_log
     user_message = text
     chat_log.append({"role": "user", "content": user_message})
     response = client.chat.completions.create(
