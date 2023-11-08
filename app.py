@@ -15,7 +15,7 @@ def hello():
 
 
 
-chat_log = [{"role": "system", "content": "You CHILL FUNNY MUSLIM, SHORT responses: "}]
+chat_log = [{"role": "system", "content": "You FUNNY CHILL MUSLIM, SHORT responses: "}]
 
 @app.route('/', methods=['POST'])
 def webhook():
@@ -35,7 +35,8 @@ def webhook():
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=chat_log,
-            max_tokens=150
+            max_tokens=150,
+            n=1
         )
         bot_response = response.choices[0].message.content.strip("\n").strip()
         chat_log.append({"role": "assistant", "content": bot_response})
