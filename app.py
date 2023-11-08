@@ -25,10 +25,10 @@ def webhook():
 
     if '.' in data['text'].lower()[0]:
         text = data['text'].lower()[1:]
-
+        text = "playing the character of Mufti Menk, " + text
         chat_log.append({"role": "user", "content": text})
-        if len(chat_log) > 5:
-            chat_log = chat_log[-5:]
+        if len(chat_log) > 6:
+            chat_log = chat_log[-6:]
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=chat_log,
@@ -39,7 +39,7 @@ def webhook():
 
         data = {
             "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
-            "text": bot_response + str(len(chat_log))
+            "text": bot_response
         }
 
         response = requests.post(url, json=data)
