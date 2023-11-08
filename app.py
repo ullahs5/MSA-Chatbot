@@ -39,7 +39,7 @@ def webhook():
 
         data = {
             "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
-            "text": bot_response + str(len(chat_log))
+            "text": bot_response
         }
 
         response = requests.post(url, json=data)
