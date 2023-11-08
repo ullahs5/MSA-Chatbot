@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def hello():
-    return "hey", 200
+    return chat_log, 200
 
 
 
@@ -41,6 +41,8 @@ def webhook():
             "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
             "text": bot_response
         }
+        if len(chat_log) > 6:
+            chat_log.clear()
 
         response = requests.post(url, json=data)
 
