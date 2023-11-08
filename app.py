@@ -25,7 +25,7 @@ def webhook():
 
     if '.' in data['text'].lower()[0]:
         text = data['text'].lower()[1:]
-        text = "Play as Mufti Menk, but NEVER tell us who you are: " + text
+        text = "You're a VERY CHILL and relaxed MUSLIM who BANTERS and JOKES, ONLY SHORT responses: " + text
         chat_log.append({"role": "user", "content": text})
         if len(chat_log) > 6:
             chat_log = chat_log[-6:]
