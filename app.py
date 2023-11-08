@@ -20,7 +20,7 @@ def webhook():
 
   if '.' in data['text'].lower()[0]:
       text = data['text'].lower()
-      response_text = chat(text, chat_log) + "HEY" + str(len(chat_log))
+      response_text = chat(text, chat_log)
       url = "https://api.groupme.com/v3/bots/post"
       data = {
           "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
@@ -40,11 +40,13 @@ def chat(text, chat_log):
         chat_log = chat_log[-5:]  # Keep the last 5 messages
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages= chat_log,
+        messages= chat_log + "HEY" + str(len(chat_log)),
         max_tokens=150
     )
     bot_response = response.choices[0].message.content.strip("\n").strip()
     chat_log.append({"role": "assistant", "content": bot_response})
+    while len(chat_log) > 5:
+        chat_log.pop(0)
     return bot_response
 
 
