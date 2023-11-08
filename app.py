@@ -22,7 +22,7 @@ def webhook():
     data = request.get_json()
 
     if '.' in data['text'].lower()[0]:
-        text = data['text'].lower()
+        text = data['text'].lower()[1:]
         response_text = chat(text) + " :" + str(len(chat_log))
         url = "https://api.groupme.com/v3/bots/post"
         data = {
