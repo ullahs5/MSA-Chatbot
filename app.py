@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def hello():
-    return chat_log, 200
+    return "hello", 200
 
 
 
@@ -39,7 +39,7 @@ def webhook():
 
         data = {
             "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
-            "text": bot_response
+            "text": bot_response + len(chat_log)
         }
         if len(chat_log) > 6:
             chat_log.clear()
