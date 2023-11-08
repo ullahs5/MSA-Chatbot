@@ -15,7 +15,7 @@ def hello():
 
 
 
-chat_log = []
+chat_log = [{"role": "system", "content": "You FUNNY MUSLIM, ONLY SHORT CHILL responses: "}]
 
 @app.route('/', methods=['POST'])
 def webhook():
@@ -25,10 +25,13 @@ def webhook():
 
     if '.' in data['text'].lower()[0]:
         text = data['text'].lower()[1:]
-        text = "You're a VERY CHILL and relaxed MUSLIM who BANTERS and JOKES, ONLY SHORT responses: " + text
-        chat_log.append({"role": "user", "content": text})
-        if len(chat_log) > 6:
-            chat_log = chat_log[-6:]
+        if len(chat_log) < 4:
+            chat_log.append({"role": "user", "content": text})
+        else:
+            chat_log.pop(1)
+            chat_log.pop(1)
+            chat_log.append({"role": "user", "content": text})
+
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=chat_log,
