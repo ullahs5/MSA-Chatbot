@@ -39,10 +39,7 @@ def chat(text, chat_log):
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages= chat_log,
-        temperature=1,
         max_tokens=500,
-        n=1,
-        stop=None,
         presence_penalty=0,
         frequency_penalty=0.1
     )
