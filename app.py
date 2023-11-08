@@ -27,6 +27,8 @@ def webhook():
         text = data['text'].lower()[1:]
 
         chat_log.append({"role": "user", "content": text})
+        if len(chat_log) > 5:
+            chat_log = chat_log[-5:]
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=chat_log,
