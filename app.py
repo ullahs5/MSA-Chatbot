@@ -32,7 +32,7 @@ def webhook():
         response = requests.post(url, json=data)
         json = urlopen(response).read().decode()
     if len(chat_log) > 5:
-        chat_log = [{"role": "system", "content": "You're Muslim"}]
+        chat_log = [{"role": "system", "content": "Use popular islamic terms"}]
     return {'status': "OK"}
 
 
