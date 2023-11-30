@@ -24,53 +24,30 @@ def webhook():
     data = request.get_json()
     url = "https://api.groupme.com/v3/bots/post"
 
-    text = data['text'].lower()[1:]
-    if len(chat_log) < 4:
-        chat_log.append({"role": "user", "content": text})
-    else:
-        chat_log.pop(1)
-        chat_log.pop(1)
-        chat_log.append({"role": "user", "content": text})
+    if '.' in data['text'].lower()[0]:
+        text = data['text'].lower()[1:]
+        if len(chat_log) < 4:
+            chat_log.append({"role": "user", "content": text})
+        else:
+            chat_log.pop(1)
+            chat_log.pop(1)
+            chat_log.append({"role": "user", "content": text})
 
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=chat_log,
-        max_tokens=150,
-        n=1
-    )
-    bot_response = response.choices[0].message.content.strip("\n").strip()
-    chat_log.append({"role": "assistant", "content": bot_response})
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=chat_log,
+            max_tokens=150,
+            n=1
+        )
+        bot_response = response.choices[0].message.content.strip("\n").strip()
+        chat_log.append({"role": "assistant", "content": bot_response})
 
-    data = {
-        "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
-        "text": bot_response
-    }
+        data = {
+            "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
+            "text": bot_response
+        }
 
-    response = requests.post(url, json=data)
-    # if '.' in data['text'].lower()[0]:
-    #     text = data['text'].lower()[1:]
-    #     if len(chat_log) < 4:
-    #         chat_log.append({"role": "user", "content": text})
-    #     else:
-    #         chat_log.pop(1)
-    #         chat_log.pop(1)
-    #         chat_log.append({"role": "user", "content": text})
-    #
-    #     response = client.chat.completions.create(
-    #         model="gpt-3.5-turbo",
-    #         messages=chat_log,
-    #         max_tokens=150,
-    #         n=1
-    #     )
-    #     bot_response = response.choices[0].message.content.strip("\n").strip()
-    #     chat_log.append({"role": "assistant", "content": bot_response})
-    #
-    #     data = {
-    #         "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
-    #         "text": bot_response
-    #     }
-    #
-    #     response = requests.post(url, json=data)
+        response = requests.post(url, json=data)
 
     return {'status': "OK"}
 
