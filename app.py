@@ -65,7 +65,7 @@ def webhook():
         chat_log.append({"role": "assistant", "content": bot_response})
 
         data = {
-            "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
+            "bot_id": "2c2d597644b8b85a57bd27b0ba",
             "text": bot_response
         }
 
