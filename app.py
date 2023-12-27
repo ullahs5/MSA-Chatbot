@@ -1,4 +1,3 @@
-# from urllib.request import urlopen
 import requests
 from flask import Flask, request
 from openai import OpenAI
@@ -48,28 +47,3 @@ def webhook():
         response = requests.post(url, json=data)
 
     return {'status': "OK"}
-
-
- # if data['name'] != 'Saif UIlah':
-    #     text = data['text'].lower()[1:]
-    #     if len(chat_log) < 4:
-    #         chat_log.append({"role": "user", "content": text})
-    #     else:
-    #         chat_log.pop(1)
-    #         chat_log.pop(1)
-    #         chat_log.append({"role": "user", "content": text})
-    #
-    #     response = client.chat.completions.create(
-    #         model="gpt-3.5-turbo",
-    #         messages=chat_log,
-    #         max_tokens=150,
-    #         n=1
-    #     )
-    #     bot_response = response.choices[0].message.content.strip("\n").strip()
-    #     chat_log.append({"role": "assistant", "content": bot_response})
-    #
-    #     data = {
-    #         "bot_id": "2c2d597644b8b85a57bd27b0ba",
-    #         "text": bot_response
-    #     }
-    #
