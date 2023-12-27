@@ -1,7 +1,7 @@
 import requests
 from flask import Flask, request
 from openai import OpenAI
-from config import api_key
+from config import api_key, my_bot_id
 
 
 API_KEY = api_key
@@ -43,7 +43,7 @@ def webhook():
         chat_log.append({"role": "assistant", "content": bot_response})
 
         data = {
-            "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
+            "bot_id": my_bot_id,
             "text": bot_response
         }
         response = requests.post(url, json=data)
