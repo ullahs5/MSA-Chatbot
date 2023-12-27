@@ -1,4 +1,4 @@
-from urllib.request import urlopen
+# from urllib.request import urlopen
 import requests
 from flask import Flask, request
 from openai import OpenAI
@@ -73,20 +73,3 @@ def webhook():
     #         "text": bot_response
     #     }
     #
-
-
-
-# client.api_key = API_KEY
-
-# def chat(text):
-#     global chat_log
-#     user_message = text
-#     chat_log.append({"role": "user", "content": user_message})
-#     response = client.chat.completions.create(
-#         model="gpt-3.5-turbo",
-#         messages=chat_log,
-#         max_tokens=150
-#     )
-#     bot_response = response.choices[0].message.content.strip("\n").strip()
-#     chat_log.append({"role": "assistant", "content": bot_response})
-#     return bot_response
