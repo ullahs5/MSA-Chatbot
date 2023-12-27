@@ -2,8 +2,7 @@ import requests
 from flask import Flask, request
 from openai import OpenAI
 from secret import api_key, my_bot_id, local_masjids, halal_options
-import schedule
-import time
+import datetime
 
 API_KEY = api_key
 client = OpenAI(api_key=API_KEY)
@@ -72,4 +71,5 @@ def say_something():
     }
     response = requests.post(url, json=data)
 
-schedule.every().wednesday.at("15:07").do(say_something)
+if datetime.datetime.today().weekday() == 4:
+    say_something()
