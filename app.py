@@ -63,13 +63,13 @@ def webhook():
 
     return {'status': "OK"}
 
-# def say_something():
-#     url = "https://api.groupme.com/v3/bots/post"
-#     bot_response = "yo"
-#     data = {
-#         "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
-#         "text": bot_response
-#     }
-#     response = requests.post(url, json=data)
-#
-# schedule.every().wednesday.at("14:05").do(say_something())
+def say_something():
+    url = "https://api.groupme.com/v3/bots/post"
+    bot_response = "yo"
+    data = {
+        "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
+        "text": bot_response
+    }
+    response = requests.post(url, json=data)
+
+schedule.every().wednesday.at("14:13").do(say_something())
