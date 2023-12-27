@@ -53,8 +53,9 @@ def webhook():
         response = requests.post(url, json=data)
 
     if '!' in data['text'].lower()[0]:
-
-        bot_response = local_masjids
+        bot_response = ""
+        if 'local masjids' in data['text'].lower():
+            bot_response = local_masjids
 
         data = {
             "bot_id": my_bot_id,
