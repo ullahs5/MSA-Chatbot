@@ -1,8 +1,9 @@
 import requests
 from flask import Flask, request
 from openai import OpenAI
-from config import api_key, my_bot_id
-
+from secret import api_key, my_bot_id, local_masjids, halal_options
+import schedule
+import time
 
 API_KEY = api_key
 client = OpenAI(api_key=API_KEY)
@@ -14,11 +15,6 @@ app = Flask(__name__)
 def hello():
     return "hello", 200
 
-local_masjids = """Local alternative masjids that will be open for Jummuah are:  
-- Al-Rahman Mosque - 26 Josie Street, Dayton OH (first one at 1:30 PM, second one at 2:30 PM) 
-- Al-Huda Mosque - 731 S Alpha Bellbrook Rd, Sugarcreek Township, OH (first one at 1:30 PM) 
-- Dayton Mercy Center - 2227 Maue Rd, Miamisburg, OH (first one at 1:30 PM, second one at 3:00 PM) 
-- Islamic Center of Centerville - 10501 Success Ln, Washington Township, OH (first one at 1:30 PM, second one at 2:30)"""
 
 chat_log = [{"role": "system", "content": "You're witty, short responses: "}]
 
@@ -54,8 +50,10 @@ def webhook():
 
     if '!' in data['text'].lower()[0]:
         bot_response = "bruh"
-        if 'local masjids' in data['text'].lower():
+        if 'masjid' in data['text'].lower():
             bot_response = local_masjids
+        elif 'halal' in data['text'].lower():
+            bot_response = halal_options
 
         data = {
             "bot_id": my_bot_id,
@@ -64,3 +62,14 @@ def webhook():
         response = requests.post(url, json=data)
 
     return {'status': "OK"}
+
+def say_something():
+    url = "https://api.groupme.com/v3/bots/post"
+    bot_response = "yo"
+    data = {
+        "bot_id": my_bot_id,
+        "text": bot_response
+    }
+    response = requests.post(url, json=data)
+
+schedule.every().wednesday.at("14:03").do(say_something())
