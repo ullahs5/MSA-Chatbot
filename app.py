@@ -5,7 +5,7 @@ from secret import api_key, my_bot_id, local_masjids, halal_options
 import schedule
 import time
 
-API_KEY = api_key
+API_KEY = "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"
 client = OpenAI(api_key=API_KEY)
 
 app = Flask(__name__)
@@ -43,7 +43,7 @@ def webhook():
         chat_log.append({"role": "assistant", "content": bot_response})
 
         data = {
-            "bot_id": my_bot_id,
+            "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
             "text": bot_response
         }
         response = requests.post(url, json=data)
@@ -56,7 +56,7 @@ def webhook():
             bot_response = halal_options
 
         data = {
-            "bot_id": my_bot_id,
+            "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
             "text": bot_response
         }
         response = requests.post(url, json=data)
@@ -67,9 +67,9 @@ def say_something():
     url = "https://api.groupme.com/v3/bots/post"
     bot_response = "yo"
     data = {
-        "bot_id": my_bot_id,
+        "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
         "text": bot_response
     }
     response = requests.post(url, json=data)
 
-schedule.every().wednesday.at("14:03").do(say_something())
+schedule.every().wednesday.at("14:05").do(say_something())
