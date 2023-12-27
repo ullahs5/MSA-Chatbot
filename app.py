@@ -71,5 +71,5 @@ def say_something():
     }
     response = requests.post(url, json=data)
 
-if datetime.datetime.today().weekday() == 4:
+if datetime.datetime.today().weekday() == 2:
     say_something()
