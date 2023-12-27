@@ -72,4 +72,4 @@ def say_something():
     }
     response = requests.post(url, json=data)
 
-schedule.every().wednesday.at("14:38").do(say_something)
+schedule.every().wednesday.at("15:07").do(say_something)
