@@ -16,7 +16,7 @@ def hello():
 
 
 
-chat_log = [{"role": "system", "content": "Mimic rude and sarcastic, SHORT responses: "}]
+chat_log = [{"role": "system", "content": "You're witty, short responses: "}]
 
 @app.route('/', methods=['POST'])
 def webhook():
@@ -41,6 +41,16 @@ def webhook():
         )
         bot_response = response.choices[0].message.content.strip("\n").strip()
         chat_log.append({"role": "assistant", "content": bot_response})
+
+        data = {
+            "bot_id": my_bot_id,
+            "text": bot_response
+        }
+        response = requests.post(url, json=data)
+
+    if '!' in data['text'].lower()[0]:
+
+        bot_response = "whats up g"
 
         data = {
             "bot_id": my_bot_id,
