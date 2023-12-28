@@ -20,7 +20,7 @@ def say_something():
     bot_response = bot_response
     data = {
         "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
-        "text": bot_response
+        "text": "yoo"
     }
     response = requests.post(url, json=data)
 
