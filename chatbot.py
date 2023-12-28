@@ -2,7 +2,8 @@ import datetime
 import requests
 from flask import Flask, request
 from openai import OpenAI
-from secret import api_key, my_bot_id, local_masjids, halal_options, jummah_announcment
+from secret import api_key, jummah_announcment, halal_options, local_masjids
+
 
 API_KEY = api_key
 client = OpenAI(api_key=API_KEY)
@@ -15,7 +16,7 @@ def hello():
     return "hello", 200
 
 
-chat_log = [{"role": "system", "content": "You're witty, short responses: "}]
+chat_log = [{"role": "system", "content": "Short witty responses: "}]
 
 @app.route('/', methods=['POST'])
 def webhook():
