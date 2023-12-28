@@ -2,9 +2,10 @@ import datetime
 import requests
 from flask import Flask, request
 from openai import OpenAI
+import os
 
 
-API_KEY = "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"
+API_KEY = os.getenv('api_key')
 client = OpenAI(api_key=API_KEY)
 
 app = Flask(__name__)
