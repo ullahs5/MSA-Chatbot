@@ -26,7 +26,7 @@ jummah_announcment = """ Salaam everyone! We have jummah today at 1:30 in the ri
 
 @app.route("/", methods=['GET'])
 def hello():
-    return "hello", 200
+    return "hi", 200
 
 
 chat_log = [{"role": "system", "content": "Short witty responses: "}]
