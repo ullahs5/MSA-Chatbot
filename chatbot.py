@@ -67,7 +67,7 @@ def webhook():
 
         data = {
             "bot_id": os.getenv('bot_id'),
-            "text": bot_response
+            "text": ayah
         }
         response = requests.post(url, json=data)
 
