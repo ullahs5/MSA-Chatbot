@@ -6,17 +6,17 @@ from secret import api_key, my_bot_id, local_masjids, halal_options
 API_KEY = api_key
 client = OpenAI(api_key=API_KEY)
 
-app = Flask(__name__)
+chatbot = Flask(__name__)
 
 
-@app.route("/", methods=['GET'])
+@chatbot.route("/", methods=['GET'])
 def hello():
     return "hello", 200
 
 
 chat_log = [{"role": "system", "content": "You're witty, short responses: "}]
 
-@app.route('/', methods=['POST'])
+@chatbot.route('/', methods=['POST'])
 def webhook():
     global chat_log
     data = request.get_json()
