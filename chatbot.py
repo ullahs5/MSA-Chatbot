@@ -2,7 +2,6 @@ import requests
 from flask import Flask, request
 from openai import OpenAI
 from secret import api_key, my_bot_id, local_masjids, halal_options
-import datetime
 
 API_KEY = api_key
 client = OpenAI(api_key=API_KEY)
@@ -61,15 +60,3 @@ def webhook():
         response = requests.post(url, json=data)
 
     return {'status': "OK"}
-
-def say_something():
-    url = "https://api.groupme.com/v3/bots/post"
-    bot_response = "yo"
-    data = {
-        "bot_id": "cab5b3cf6bcaa4b7db9d482f5b",
-        "text": bot_response
-    }
-    response = requests.post(url, json=data)
-
-if datetime.datetime.today().weekday() == 2:
-    say_something()
