@@ -13,5 +13,4 @@ Halal options off campus:
 -Halal Burgers - 767 Lyons Rd, Washington Township, OH 45459
 -International Cafe & Delicatessen - 263 N Main St, Centerville, OH 45459"""
 
-jummah_announcment = """ 
-Salaam everyone! We have jummah today at 1:30 in the rike center. """
+jummah_announcment = """Salaam everyone! We have jummah today at 1:30 in the rike center. """

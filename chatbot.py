@@ -61,6 +61,17 @@ def webhook():
         }
         response = requests.post(url, json=data)
 
+    if "-" in data['text'].lower()[0]:
+        numbering = data['text'][1:]
+        ayah = requests.get(f"http://api.alquran.cloud/v1/ayah/{numbering}/en.yusufali").json()['data']['text']
+
+        data = {
+            "bot_id": os.getenv('bot_id'),
+            "text": bot_response
+        }
+        response = requests.post(url, json=data)
+
+
     return {'status': "OK"}
 
 def announcement():
