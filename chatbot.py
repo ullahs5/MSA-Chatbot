@@ -2,7 +2,7 @@ import datetime
 import requests
 from flask import Flask, request
 from openai import OpenAI
-from secret import api_key, jummah_announcment, halal_options, local_masjids
+from secret import api_key, jummah_announcment, halal_options, local_masjids, my_bot_id
 
 
 API_KEY = api_key
