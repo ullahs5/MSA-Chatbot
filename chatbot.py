@@ -71,5 +71,5 @@ def announcement():
     }
     response = requests.post(url, json=data)
 
-if datetime.datetime.today().weekday() == 3:
+if datetime.datetime.today().weekday() == 4:
     announcement()
