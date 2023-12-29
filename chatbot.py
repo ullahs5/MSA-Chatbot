@@ -85,5 +85,5 @@ def announcement():
     response = requests.post(url, json=data)
 
 now = datetime.datetime.now()
-if now.hour == 12 and now.weekday() == 4:
+if now.hour == 1 and now.weekday() == 4:
     announcement()
