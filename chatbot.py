@@ -49,7 +49,7 @@ def webhook():
         response = requests.post(url, json=data)
 
     if '!' in data['text'].lower()[0]:
-        bot_response = "bruh"
+        bot_response = "!masjid or !halal"
         if 'masjid' in data['text'].lower():
             bot_response = local_masjids
         elif 'halal' in data['text'].lower():
@@ -83,5 +83,6 @@ def announcement():
     }
     response = requests.post(url, json=data)
 
-if datetime.datetime.today().weekday() == 4:
+now = datetime.datetime.now()
+if now.weekday() == 4 and now.hour == 12:
     announcement()
