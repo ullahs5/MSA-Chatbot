@@ -74,7 +74,7 @@ def webhook():
 
     return {'status': "OK"}
 
-#
+
 def announcement():
 
     url = "https://api.groupme.com/v3/bots/post"
