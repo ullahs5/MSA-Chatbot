@@ -75,15 +75,15 @@ def webhook():
     return {'status': "OK"}
 
 
-def announcement():
-
-    url = "https://api.groupme.com/v3/bots/post"
-    data = {
-        "bot_id": os.getenv('bot_id'),
-        "text": jummah_announcment
-    }
-    response = requests.post(url, json=data)
-
-now = datetime.datetime.now()
-if now.hour == 1 and now.weekday() == 4:
-    announcement()
+# def announcement():
+#
+#     url = "https://api.groupme.com/v3/bots/post"
+#     data = {
+#         "bot_id": os.getenv('bot_id'),
+#         "text": jummah_announcment
+#     }
+#     response = requests.post(url, json=data)
+#
+# now = datetime.datetime.now()
+# if now.hour == 1 and now.weekday() == 4:
+#     announcement()
