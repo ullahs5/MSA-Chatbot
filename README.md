@@ -1,13 +1,12 @@
 *Still documenting
-# MSA Chatbot
+# MSA Chatbot for GroupMe
 
 ---
 
 ## Features
 - **OpenAI Integration:** Utilizes the OpenAI API to generate responses and interact with users. 
-- **GroupMe Integration:** Posts responses to GroupMe via their API.
-- **Quranic Verse Retrieval:** Fetches and posts specific Quranic verses based on user input.
-- **Islamic Queries Handling:** Responds to specific commands for Islamic-related queries. 
+- **Quranic Verses:** Posts specific Quranic verses given a chapter and verse number by the user.
+- **Islamic Queries Handling:** Responds to specific commands for Islamic-related queries, for example getting local masjids or halal eating options.  
 
 ---
 
