@@ -16,7 +16,7 @@ def hello():
     return "hi", 200
 
 
-chat_log = [{"role": "system", "content": "Short witty responses: "}]
+chat_log = [{"role": "system", "content": "Short Islamic responses: "}]
 
 @app.route('/', methods=['POST'])
 def webhook():
