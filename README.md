@@ -38,7 +38,7 @@
   - `'-'`: Fetches and posts specific Quranic verses based on the provided numbering.
 
 ### Additional Functionality (Commented Out)
-- A function for automated Jummah announcements is available but currently commented out.
+- A function for automated Jummah announcements is available but is commented out to be improved. 
 
 ---
 
