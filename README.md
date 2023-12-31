@@ -28,13 +28,13 @@
 - 1. Create an App on heroku.
 - 2. Install the CLI: https://devcenter.heroku.com/articles/heroku-cli
 - 3. Login and clone repository
-     -$ heroku login
-     -$ heroku git:clone -a [app name]
-     -$ cd [app name]
+     - $ heroku login
+     - $ heroku git:clone -a [app name]
+     - $ cd [app name]
  - 4. Deploy changes
-     -$ git add .
-     -$ git commit -am "make it better"
-     -$ git push heroku main
+     - $ git add .
+     - $ git commit -am "make it better"
+     - $ git push heroku main
 
 
 ---
