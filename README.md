@@ -19,10 +19,9 @@
 
 ### Steps
 1. Clone the repository.
-2. Set up a virtual environment (optional but recommended).
-3. Install dependencies via `pip install -r requirements.txt`.
-4. Set up environment variables for `api_key` and `bot_id`.
-5. Run the Flask application using `python app.py`.
+2. Install dependencies via `pip install -r requirements.txt`.
+3. Set up environment variables for `api_key` and `bot_id`.
+4. Run the Flask application using `python app.py`.
 
 ---
 
