@@ -6,7 +6,8 @@
 ## Features
 - **OpenAI Integration:** Utilizes the OpenAI API to generate responses and interact with users. 
 - **Quranic Verses:** Posts specific Quranic verses given a chapter and verse number by the user.
-- **Islamic Queries Handling:** Responds to specific commands for Islamic-related queries, for example getting local masjids or halal eating options.  
+- **Islamic Queries Handling:** Responds to specific commands for Islamic-related queries, for example getting local masjids or halal eating options.
+- **Announcements:** Posts scheduled announcements, for example Jummah announcements.   
 
 ---
 
