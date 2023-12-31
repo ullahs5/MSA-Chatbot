@@ -23,7 +23,7 @@
 2. Install dependencies via `pip install -r requirements.txt`.
 3. Set up environment variables for `api_key` and `bot_id`.
 
-###Deployment
+### Deployment
 -Cloud Service Requirement
 This application requires a cloud service like Heroku for deployment.
 
