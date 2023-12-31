@@ -31,10 +31,10 @@
      - $ heroku login
      - $ heroku git:clone -a [app name]
      - $ cd [app name]
-   4. Deploy changes
-     - $ git add .
-     - $ git commit -am "make it better"
-     - $ git push heroku main
+   5. Deploy changes
+      - $ git add .
+      - $ git commit -am "make it better"
+      - - $ git push heroku main
 
 
 ---
