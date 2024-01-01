@@ -1,5 +1,6 @@
 *Still documenting
 # MSA Chatbot for GroupMe
+This chatbot for GroupMe offers interactive conversations and specific functionalities for Islamic queries, including sharing Quranic verses, providing information on local masjids and halal options, and scheduling announcements like Jummah reminders. It's easily deployable via Heroku, with room for future expansions to include more Islamic features based on community needs.
 
 ---
 
